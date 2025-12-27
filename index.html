@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سیستم استوری</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- آیکون‌ها -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-50" dir="rtl">
+    <!-- بخش استوری‌ها - بالای صفحه -->
+    <div class="stories-container bg-white py-4 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4" style="position: relative">
+        <!-- دکمه اسکرول چپ -->
+        <button
+          class="scroll-btn scroll-left-btn"
+          id="scrollLeftBtn"
+          style="
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #424750;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+          "
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- دکمه اسکرول راست -->
+        <button
+          class="scroll-btn scroll-right-btn"
+          id="scrollRightBtn"
+          style="
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #424750;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+          "
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="stories-scroll flex gap-4 overflow-x-auto pb-2">
+          <!-- استوری‌ها اینجا میان... -->
+
+          <!-- استوری 1 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="علیرضا_افشار"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
+            data-title="موقع فروش کدوم بزنیم؟"
+            data-description="موقع فروش کدوم بزنیم بهتر میخری؟"
+            data-product-title="گوشی موبایل سامسونگ مدل Galaxy A07"
+            data-product-image="https://picsum.photos/seed/product1/200/200"
+            data-product-link="#product-1"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user1/150/150"
+                alt="علیرضا"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">علیرضا افشار</p>
+          </div>
+
+          <!-- استوری 2 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="رفیق_رسمی"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story2/600/900"
+            data-title="رفیق رسمی‌تون"
+            data-description="محصولات جدید فصل"
+            data-product-title="لباس مردانه کت و شلوار"
+            data-product-image="https://picsum.photos/seed/product2/200/200"
+            data-product-link="#product-2"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user2/150/150" alt="رفیق" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">رفیق رسمی‌تون</p>
+          </div>
+
+          <!-- استوری 3 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="شکوفون_برای_خروج"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_2mb.mp4"
+            data-title="شکوفون برای خروج"
+            data-description="بهترین محصولات برای سفر"
+            data-product-title="کوله پشتی مسافرتی"
+            data-product-image="https://picsum.photos/seed/product3/200/200"
+            data-product-link="#product-3"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user3/150/150"
+                alt="شکوفون"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">شکوفون برای خروج</p>
+          </div>
+
+          <!-- استوری 4 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="بهترینه_خودمونه"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story4/600/900"
+            data-title="بهترینه خودمونه"
+            data-description="تخفیف ویژه امروز"
+            data-product-title="هدفون بی‌سیم"
+            data-product-image="https://picsum.photos/seed/product4/200/200"
+            data-product-link="#product-4"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user4/150/150"
+                alt="بهترینه"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">بهترینه خودمونه</p>
+          </div>
+
+          <!-- استوری 5 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="هدست_کیمینگ"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
+            data-title="هدست کیمینگ"
+            data-description="بهترین هدست برای بازی"
+            data-product-title="هدست گیمینگ RGB"
+            data-product-image="https://picsum.photos/seed/product5/200/200"
+            data-product-link="#product-5"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user5/150/150" alt="هدست" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">هدست کیمینگ</p>
+          </div>
+
+          <!-- استوری 6 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="فروشگاه_دیجیتال"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story6/600/900"
+            data-title="فروشگاه دیجیتال"
+            data-description="کالکشن جدید لپ تاپ"
+            data-product-title="لپ تاپ ایسوس"
+            data-product-image="https://picsum.photos/seed/product6/200/200"
+            data-product-link="#product-6"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user6/150/150"
+                alt="دیجیتال"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">فروشگاه دیجیتال</p>
+          </div>
+
+          <!-- استوری 7 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="تکنو_شاپ"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
+            data-title="تکنو شاپ"
+            data-description="آخرین مدل‌های گوشی"
+            data-product-title="آیفون 15 پرو مکس"
+            data-product-image="https://picsum.photos/seed/product7/200/200"
+            data-product-link="#product-7"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user7/150/150" alt="تکنو" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">تکنو شاپ</p>
+          </div>
+
+          <!-- استوری 8 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="مد_و_پوشاک"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story8/600/900"
+            data-title="مد و پوشاک"
+            data-description="جدیدترین مدل‌های لباس"
+            data-product-title="تی شرت مردانه"
+            data-product-image="https://picsum.photos/seed/product8/200/200"
+            data-product-link="#product-8"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user8/150/150" alt="مد" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">مد و پوشاک</p>
+          </div>
+
+          <!-- استوری 9 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="ورزشی_باش"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_2mb.mp4"
+            data-title="ورزشی باش"
+            data-description="تجهیزات ورزشی حرفه‌ای"
+            data-product-title="دمبل و وزنه"
+            data-product-image="https://picsum.photos/seed/product9/200/200"
+            data-product-link="#product-9"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user9/150/150" alt="ورزشی" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">ورزشی باش</p>
+          </div>
+
+          <!-- استوری 10 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="خانه_و_آشپزخانه"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story10/600/900"
+            data-title="خانه و آشپزخانه"
+            data-description="لوازم خانگی با کیفیت"
+            data-product-title="میکسر برقی"
+            data-product-image="https://picsum.photos/seed/product10/200/200"
+            data-product-link="#product-10"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user10/150/150" alt="خانه" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">خانه و آشپزخانه</p>
+          </div>
+
+          <!-- استوری 11 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="کتاب_و_هنر"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
+            data-title="کتاب و هنر"
+            data-description="بهترین کتاب‌های سال"
+            data-product-title="کتاب رمان"
+            data-product-image="https://picsum.photos/seed/product11/200/200"
+            data-product-link="#product-11"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user11/150/150" alt="کتاب" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">کتاب و هنر</p>
+          </div>
+
+          <!-- استوری 12 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="زیبایی_و_سلامت"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story12/600/900"
+            data-title="زیبایی و سلامت"
+            data-description="محصولات آرایشی و بهداشتی"
+            data-product-title="کرم مرطوب کننده"
+            data-product-image="https://picsum.photos/seed/product12/200/200"
+            data-product-link="#product-12"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user12/150/150"
+                alt="زیبایی"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">زیبایی و سلامت</p>
+          </div>
+
+          <!-- استوری 13 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="اسباب_بازی"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
+            data-title="اسباب بازی"
+            data-description="دنیای بازی کودکان"
+            data-product-title="ماشین کنترلی"
+            data-product-image="https://picsum.photos/seed/product13/200/200"
+            data-product-link="#product-13"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user13/150/150"
+                alt="اسباب"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">اسباب بازی</p>
+          </div>
+
+          <!-- استوری 14 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="ابزار_و_یراق"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story14/600/900"
+            data-title="ابزار و یراق"
+            data-description="ابزارآلات حرفه‌ای"
+            data-product-title="دریل برقی"
+            data-product-image="https://picsum.photos/seed/product14/200/200"
+            data-product-link="#product-14"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user14/150/150"
+                alt="ابزار"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">ابزار و یراق</p>
+          </div>
+
+          <!-- استوری 15 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="خودرو_و_موتور"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_2mb.mp4"
+            data-title="خودرو و موتور"
+            data-description="لوازم جانبی خودرو"
+            data-product-title="دوربین خودرو"
+            data-product-image="https://picsum.photos/seed/product15/200/200"
+            data-product-link="#product-15"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user15/150/150"
+                alt="خودرو"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">خودرو و موتور</p>
+          </div>
+
+          <!-- استوری 16 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="باغ_و_گل"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story16/600/900"
+            data-title="باغ و گل"
+            data-description="ابزار باغبانی"
+            data-product-title="گلدان تزئینی"
+            data-product-image="https://picsum.photos/seed/product16/200/200"
+            data-product-link="#product-16"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user16/150/150" alt="باغ" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">باغ و گل</p>
+          </div>
+
+          <!-- استوری 17 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="موسیقی_و_سرگرمی"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
+            data-title="موسیقی و سرگرمی"
+            data-description="ساز و آلات موسیقی"
+            data-product-title="گیتار الکتریک"
+            data-product-image="https://picsum.photos/seed/product17/200/200"
+            data-product-link="#product-17"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user17/150/150"
+                alt="موسیقی"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">موسیقی و سرگرمی</p>
+          </div>
+
+          <!-- استوری 18 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="حیوانات_خانگی"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story18/600/900"
+            data-title="حیوانات خانگی"
+            data-description="غذا و لوازم حیوانات"
+            data-product-title="غذای گربه"
+            data-product-image="https://picsum.photos/seed/product18/200/200"
+            data-product-link="#product-18"
+          >
+            <div class="story-avatar">
+              <img
+                src="https://picsum.photos/seed/user18/150/150"
+                alt="حیوانات"
+              />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">حیوانات خانگی</p>
+          </div>
+
+          <!-- استوری 19 - ویدیو -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="سفر_و_گردشگری"
+            data-type="video"
+            data-media="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
+            data-title="سفر و گردشگری"
+            data-description="لوازم سفر و کمپینگ"
+            data-product-title="چادر مسافرتی"
+            data-product-image="https://picsum.photos/seed/product19/200/200"
+            data-product-link="#product-19"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user19/150/150" alt="سفر" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">سفر و گردشگری</p>
+          </div>
+
+          <!-- استوری 20 - تصویر -->
+          <div
+            class="story-item flex-shrink-0 cursor-pointer"
+            data-username="دکوراسیون"
+            data-type="image"
+            data-media="https://picsum.photos/seed/story20/600/900"
+            data-title="دکوراسیون"
+            data-description="وسایل تزئینی منزل"
+            data-product-title="آینه دیواری"
+            data-product-image="https://picsum.photos/seed/product20/200/200"
+            data-product-link="#product-20"
+          >
+            <div class="story-avatar">
+              <img src="https://picsum.photos/seed/user20/150/150" alt="دکور" />
+              <div class="story-ring"></div>
+            </div>
+            <p class="story-title">دکوراسیون</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- مودال استوری -->
+    <div id="storyModal" class="story-modal hidden">
+      <div class="story-modal-overlay"></div>
+
+      <div class="story-modal-content">
+        <!-- دکمه بستن -->
+        <button class="story-close-btn" id="closeBtn">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- نوار پیشرفت -->
+        <div class="story-progress-bar">
+          <div class="story-progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- اطلاعات کاربر -->
+        <div class="story-header">
+          <div class="story-user-info">
+            <img src="" alt="" class="story-user-avatar" id="modalAvatar" />
+            <div class="story-user-details">
+              <h3 id="modalUsername">نام کاربر</h3>
+              <p id="modalTime">1 دقیقه پیش</p>
+            </div>
+          </div>
+          <button class="story-follow-btn" id="followBtn">دنبال کن</button>
+        </div>
+
+        <!-- محتوای استوری (تصویر یا ویدیو) -->
+        <div class="story-media-container">
+          <img id="storyImage" class="story-media hidden" src="" alt="Story" />
+          <video
+            id="storyVideo"
+            class="story-media hidden"
+            src=""
+            muted
+          ></video>
+
+          <!-- دکمه‌های کنترل -->
+          <div class="story-controls">
+            <!-- دکمه قبلی -->
+            <button class="story-nav-btn story-prev-btn" id="prevBtn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- دکمه بعدی -->
+            <button class="story-nav-btn story-next-btn" id="nextBtn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <!-- دکمه پلی/پاز -->
+            <button class="story-play-pause-btn" id="playPauseBtn">
+              <i class="fas fa-pause"></i>
+            </button>
+
+            <!-- دکمه صدا -->
+            <button class="story-volume-btn" id="volumeBtn">
+              <i class="fas fa-volume-mute"></i>
+            </button>
+          </div>
+
+          <!-- متن استوری -->
+          <div class="story-text-overlay">
+            <h2 id="storyTitle">عنوان استوری</h2>
+            <p id="storyDescription">توضیحات استوری</p>
+          </div>
+        </div>
+
+        <!-- بخش محصول -->
+        <div class="story-product-section">
+          <div class="story-product-card">
+            <img src="" alt="" id="productImage" class="story-product-image" />
+            <div class="story-product-info">
+              <h4 id="productTitle">نام محصول</h4>
+              <a href="#" id="productLink" class="story-product-btn">
+                مشاهده محصول
+                <i class="fas fa-arrow-left mr-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- دکمه‌های اکشن -->
+          <div class="story-actions">
+            <button class="story-action-btn">
+              <i class="fas fa-heart"></i>
+              <span id="likeCount">332</span>
+            </button>
+            <button class="story-action-btn">
+              <i class="fas fa-comment"></i>
+              <span>15</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
