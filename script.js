@@ -247,58 +247,109 @@ function updateNavigationButtons() {
 // شروع نوار پیشرفت
 // =====================================
 function startProgress(type) {
-  stopProgress();
-  progressValue = 0;
-  progressBar.style.width = "0%";
-  isPaused = false;
-
-  let duration;
-  if (type === "video") {
-    storyVideo.addEventListener("loadedmetadata", () => {
-      duration = storyVideo.duration * 1000;
-      animateProgress(duration);
-    });
-  } else {
-    duration = 5000;
-    animateProgress(duration);
-  }
+    stopProgress();
+    progressValue = 0;
+    progressBar.style.width = '0%';
+    isPaused = false;
+    
+    let duration;
+    if (type === 'video') {
+        // منتظر بمون تا ویدیو آماده بشه
+        const videoLoadHandler = function() {
+            if (storyVideo.duration && !isNaN(storyVideo.duration) && storyVideo.duration > 0) {
+                duration = storyVideo.duration * 1000;
+                animateProgress(duration);
+            } else {
+                // اگر duration نامعتبر بود، 10 ثانیه پیش‌فرض
+                duration = 10000;
+                animateProgress(duration);
+            }
+            storyVideo.removeEventListener('loadedmetadata', videoLoadHandler);
+            storyVideo.removeEventListener('canplay', videoLoadHandler);
+        };
+        
+        storyVideo.addEventListener('loadedmetadata', videoLoadHandler);
+        storyVideo.addEventListener('canplay', videoLoadHandler);
+        
+        // اگر بعد از 500 میلی‌ثانیه لود نشد، با 10 ثانیه شروع کن
+        setTimeout(() => {
+            if (!progressInterval) {
+                duration = 10000;
+                animateProgress(duration);
+            }
+        }, 500);
+    } else {
+        // برای تصویر، 5 ثانیه
+        duration = 5000;
+        animateProgress(duration);
+    }
 }
 
 // =====================================
-// انیمیشن نوار پیشرفت
+// انیمیشن نوار پیشرفت - بدون لرزش
 // =====================================
 function animateProgress(duration) {
-  progressStartTime = Date.now();
-  progressPausedTime = 0;
-
-  progressInterval = setInterval(() => {
-    if (!isPaused) {
-      const elapsed = Date.now() - progressStartTime - progressPausedTime;
-      progressValue = (elapsed / duration) * 100;
-
-      if (progressValue >= 100) {
-        progressValue = 100;
-        progressBar.style.width = "100%";
-        stopProgress();
-
-        setTimeout(() => {
-          showNextStory();
-        }, 300);
-      } else {
-        progressBar.style.width = progressValue + "%";
-      }
+    // اول progress قبلی رو پاک کن
+    if (progressInterval) {
+        clearInterval(progressInterval);
     }
-  }, 50);
+    
+    progressStartTime = Date.now();
+    progressPausedTime = 0;
+    progressValue = 0;
+    
+    // استفاده از requestAnimationFrame برای انیمیشن روان‌تر
+    function updateProgress() {
+        if (!isPaused && !storyModal.classList.contains('hidden')) {
+            const elapsed = Date.now() - progressStartTime - progressPausedTime;
+            progressValue = Math.min((elapsed / duration) * 100, 100);
+            
+            // به‌روزرسانی روان نوار پیشرفت
+            progressBar.style.width = progressValue + '%';
+            
+            if (progressValue >= 100) {
+                progressValue = 100;
+                progressBar.style.width = '100%';
+                
+                setTimeout(() => {
+                    showNextStory();
+                }, 300);
+            } else {
+                requestAnimationFrame(updateProgress);
+            }
+        } else if (!storyModal.classList.contains('hidden')) {
+            // اگر pause شد، دوباره چک کن
+            requestAnimationFrame(updateProgress);
+        }
+    }
+    
+    // شروع انیمیشن
+    requestAnimationFrame(updateProgress);
+    
+    // یک interval پشتیبان برای اطمینان
+    progressInterval = setInterval(() => {
+        if (!isPaused && !storyModal.classList.contains('hidden')) {
+            const elapsed = Date.now() - progressStartTime - progressPausedTime;
+            progressValue = Math.min((elapsed / duration) * 100, 100);
+            
+            if (progressValue >= 100) {
+                stopProgress();
+                setTimeout(() => {
+                    showNextStory();
+                }, 300);
+            }
+        }
+    }, 100);
 }
 
 // =====================================
 // توقف نوار پیشرفت
 // =====================================
 function stopProgress() {
-  if (progressInterval) {
-    clearInterval(progressInterval);
-    progressInterval = null;
-  }
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
 }
 
 // =====================================
